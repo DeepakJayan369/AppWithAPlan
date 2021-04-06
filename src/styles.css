@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+body{
+    background:rgb(79, 143, 79);    
+}
+
+.TextToButton {
+    background: grey;
+}
+
+.TextToButton:hover {
+    background: lightgreen;
+    cursor:pointer;
+}
+
+.center {
+    text-align: center;
+}
