@@ -37,21 +37,43 @@ private async request(method: string, url: string, data?: any) {
   });
 }
 
-getEvents() {
-  return this.request('GET', `${environment.serverUrl}/event`);
+//#region Event Update
+
+getThingsToDo() {
+  return this.request('GET', `${environment.serverUrl}/todo`);
 }
 
-createEvent(event) {
-  return this.request('POST', `${environment.serverUrl}/event`, event);
+createThingsToDo(todo) {
+  return this.request('POST', `${environment.serverUrl}/todo`, todo);
 }
 
-updateEvent(event) {
-  return this.request('PUT', `${environment.serverUrl}/event/${event.id}`, event);
+updateThingsToDo(todo) {
+  return this.request('PUT', `${environment.serverUrl}/todo/${todo.id}`, todo);
 }
 
-deleteEvent(event) {
-  return this.request('DELETE', `${environment.serverUrl}/event/${event.id}`);
+deleteThingsToDo(todo) {
+  return this.request('DELETE', `${environment.serverUrl}/todo/${todo.id}`);
 }
+//#endregion
+
+//#region Streaks Update : Still to be edited, to remove 'event' object
+getStreaks() {
+  return this.request('GET', `${environment.serverUrl}/streak`);
+}
+
+createStreak(event) {
+  return this.request('POST', `${environment.serverUrl}/streak`, event);
+}
+
+updateStreak(event) {
+  return this.request('PUT', `${environment.serverUrl}/streak/${event.id}`, event);
+}
+
+deleteStreak(event) {
+  return this.request('DELETE', `${environment.serverUrl}/streak/${event.id}`);
+
+}
+//#endregion
 
 //#endregion
 

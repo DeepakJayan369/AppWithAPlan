@@ -14,6 +14,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HotStreakComponent } from './hot-streak/hot-streak.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeWelcomeComponent } from './home-welcome/home-welcome.component';
+import { ThingsToDoComponent } from './things-to-do/things-to-do.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HomeWelcomeComponent } from './home-welcome/home-welcome.component';
     HomePageComponent,
     HotStreakComponent,
     PageNotFoundComponent,
-    HomeWelcomeComponent
+    HomeWelcomeComponent,
+    ThingsToDoComponent
   ],
   imports: [
     BrowserModule,

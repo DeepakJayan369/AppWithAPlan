@@ -1,0 +1,68 @@
+<br>
+<p class="center"> Things to Do is a Work in Progress. <br>
+  Keep checking frequently for more functionality!</p>
+  
+<p> Please find the current Things to Do below: </p>
+
+<div class="container page-content">
+    <div class="row">
+      <div class="col-sm-12 col-md">
+        <ngx-timeline [events]="thingsToDo">
+          <ng-template let-event let-index="rowIndex" timelineBody>
+            <div>{{event.status}}</div>
+            <div>{{event.body}}</div>
+            <div class="button-row">
+              <button type="button" class="btn btn-primary" (click)="editToDo(index, toDoModal)"><i class="fa fa-edit"></i></button>
+              <button type="button" class="btn btn-danger" (click)="deleteToDo(index)"><i class="fa fa-trash"></i></button>
+            </div>
+          </ng-template>
+        </ngx-timeline>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-primary" (click)="addToDo(toDoModal)"><i class="fa fa-plus"></i> Add</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #toDoModal>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Things To Do</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group full-width-input">
+          <label>Title</label>
+          <input class="form-control" placeholder="To Do Name" formControlName="title" required>
+        </div>
+        <div class="form-group full-width-input">
+          <label>Status</label>
+          <input class="form-control" formControlName="status">
+        </div>
+        <div class="form-group full-width-input">
+          <label>Description</label>
+          <input class="form-control" formControlName="description">
+        </div>
+        <div class="form-group full-width-input">
+          <label>Date</label>
+          <input class="form-control" formControlName="date" bsDatepicker>
+        </div>
+
+        <!-- <div class="md-form">
+          <i class="fa fa-calendar prefix grey-text"></i>
+          <label>Date</label>
+          <mdb-date-picker id="birthdate" class="form-control" formControlName="birthdate" mdbInputDirective
+            data-error="Valid birthdate is required" data-success="&nbsp;"></mdb-date-picker>
+          <mdb-date-picker formControlName="date" label="Date"[options]="myDatePickerOptions"[locale]="'hu'"></mdb-date-picker> 
+          <mdb-date-picker class="form-control" formControlName="date" label="Date"[options]="myDatePickerOptions"[locale]="'hu'"></mdb-date-picker>
+        </div> -->
+
+        <div class="button-row">
+          <button type="button" class="btn btn-primary" (click)="modalCallback()">Submit</button>
+          <button type="button" class="btn btn-light" (click)="onCancel()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
