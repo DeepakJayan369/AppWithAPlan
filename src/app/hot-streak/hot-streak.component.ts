@@ -75,12 +75,12 @@ export class HotStreakComponent implements OnInit {
     const newToDo = {      
       name: this.form.get('name').value,
       description: this.form.get('description').value,
-      status: this.form.get('status').value,
-      streak: this.form.get('streak').value,
-      last_done:  this.form.get('last_done').value, 
-      started: this.form.get('started').value,
-      missed: this.form.get('missed').value,
-      total_missed: this.form.get('total_missed').value,
+      status: "Not Done",
+      streak: 0,
+      last_done:  new Date(), 
+      started: new Date(),
+      missed: 0,
+      total_missed: 0,
       category: this.form.get('category').value,
     };
     this.modalRef.hide();
