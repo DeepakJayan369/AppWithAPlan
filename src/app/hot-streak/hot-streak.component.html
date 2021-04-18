@@ -7,6 +7,7 @@
 <table class="table table-striped">
   <thead>
   <tr>
+    <th> Edit/Delete </th>
     <th> Sl. No. </th>
     <th> Streak Name </th>
     <th> Streak Description </th>
@@ -23,7 +24,13 @@
   </tr>    
   </thead>  
   <tbody>
-  <tr *ngFor= "let streak of streaks; index as i" >
+  <tr *ngFor= "let streak of streaks; let i = index;" >
+    <th scope="row">
+      <div class="button-row">
+        <button type="button" class="btn btn-primary" (click)="editStreak(i, streakModal)"><i class="fa fa-edit"></i></button>
+        <button type="button" class="btn btn-danger" (click)="deleteStreak(i)"><i class="fa fa-trash"></i></button>
+      </div>
+    </th>
     <th scope="row"> {{i+1}} </th>
     <td>{{streak.name}}</td>
     <td>{{streak.description}}</td>
@@ -42,7 +49,7 @@
 <br>
 <p> Click to enter a new Streak that you wish to undertake: </p>
 <div class="col-md-2">
-    <button type="button" class="btn btn-primary" (click)="addToDo(toDoModal)"><i class="fa fa-plus"></i> Add</button>
+    <button type="button" class="btn btn-primary" (click)="addStreak(streakModal)"><i class="fa fa-plus"></i> Add</button>
   </div>
 
 <br>
@@ -62,7 +69,7 @@
 
 
 
-<ng-template #toDoModal>
+<ng-template #streakModal>
     <div class="modal-header">
       <h4 class="modal-title pull-left">Enter a New Streak:</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">

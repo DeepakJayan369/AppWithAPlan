@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -61,16 +61,16 @@ getStreaks() {
   return this.request('GET', `${environment.serverUrl}/streak`);
 }
 
-createStreak(event) {
-  return this.request('POST', `${environment.serverUrl}/streak`, event);
+createStreak(streak) {
+  return this.request('POST', `${environment.serverUrl}/streak`, streak);
 }
 
-updateStreak(event) {
-  return this.request('PUT', `${environment.serverUrl}/streak/${event.id}`, event);
+updateStreak(streak) {
+  return this.request('PUT', `${environment.serverUrl}/streak/${streak.sl_no}`, streak);
 }
 
-deleteStreak(event) {
-  return this.request('DELETE', `${environment.serverUrl}/streak/${event.id}`);
+deleteStreak(streak) {
+  return this.request('DELETE', `${environment.serverUrl}/streak/${streak.sl_no}`);
 
 }
 //#endregion

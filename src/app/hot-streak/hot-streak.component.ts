@@ -13,7 +13,7 @@ export class HotStreakComponent implements OnInit {
   modalRef: BsModalRef;
 
   streaks: any[] = [];
-  currentStreak: any = {id: null, name: '', description: '', status:'', streak:'',
+  currentStreak: any = {sl_no: null, name: '', description: '', status:'', streak:'',
   last_done: new Date(), started: new Date(), missed:'',	total_missed:'', category:''};
   modalCallback: (() => void);
 
@@ -63,8 +63,8 @@ export class HotStreakComponent implements OnInit {
     });
   }
 
-  addToDo(template) {
-    this.currentStreak = {id: null, name: '', description: '', status:'', streak:'',
+  addStreak(template) {
+    this.currentStreak = {sl_no: null, name: '', description: '', status:'', streak:'',
     last_done: new Date(), started: new Date(), missed:'',	total_missed:'', category:''};
     this.updateForm();
     this.modalCallback = this.createStreak.bind(this);
@@ -72,7 +72,7 @@ export class HotStreakComponent implements OnInit {
   }
 
   createStreak() {
-    const newToDo = {      
+    const newStreak = {      
       name: this.form.get('name').value,
       description: this.form.get('description').value,
       status: "Not Done",
@@ -84,12 +84,12 @@ export class HotStreakComponent implements OnInit {
       category: this.form.get('category').value,
     };
     this.modalRef.hide();
-    this.server.createStreak(newToDo).then(() => {
+    this.server.createStreak(newStreak).then(() => {
       this.getStreaks();
     });
   }
 
-  editToDo(index, template) {
+  editStreak(index, template) {
     this.currentStreak = this.streaks[index];
     this.updateForm();
     this.modalCallback = this.updateStreak.bind(this);
@@ -97,8 +97,8 @@ export class HotStreakComponent implements OnInit {
   }
 
   updateStreak() {
-    const toDoData = {
-      id: this.currentStreak.id,
+    const streakData = {
+      sl_no: this.currentStreak.sl_no,
       name: this.form.get('name').value,
       description: this.form.get('description').value,
       status: this.form.get('status').value,
@@ -110,12 +110,12 @@ export class HotStreakComponent implements OnInit {
       category: this.form.get('category').value,
     };
     this.modalRef.hide();
-    this.server.updateStreak(toDoData).then(() => {
+    this.server.updateStreak(streakData).then(() => {
       this.getStreaks();
     });
   }
 
-  deleteToDo(index) {
+  deleteStreak(index) {
     this.server.deleteStreak(this.streaks[index]).then(() => {
       this.getStreaks();
     });
