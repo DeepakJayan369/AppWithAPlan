@@ -124,4 +124,27 @@ export class HotStreakComponent implements OnInit {
   onCancel() {
     this.modalRef.hide();
   }
+
+  clickDoneStreak(index) {
+    this.currentStreak = this.streaks[index];
+    this.doneStreak();
+  }
+
+  doneStreak(){
+    const streakData = {
+      sl_no: this.currentStreak.sl_no,
+      name: this.currentStreak.name,
+      description: this.currentStreak.description,
+      status: this.currentStreak.status,
+      streak: this.currentStreak.streak +1,
+      last_done:  new Date(this.currentStreak.last_done +1), 
+      started: new Date(this.currentStreak.started),
+      missed: this.currentStreak.missed,
+      total_missed: this.currentStreak.total_missed,
+      category: this.currentStreak.category,
+    };    
+    this.server.updateStreak(streakData).then(() => {
+      this.getStreaks();
+    });
+  }
 }

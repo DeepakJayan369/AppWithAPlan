@@ -34,7 +34,11 @@
     <th scope="row"> {{i+1}} </th>
     <td>{{streak.name}}</td>
     <td>{{streak.description}}</td>
-    <td></td>
+    <td>
+      <div class="button-row">
+        <button type="button" class="btn btn-primary" (click)="clickDoneStreak(i)"><i class="fa fa-check-square-o"></i> Done </button>        
+      </div>
+    </td>
     <td>{{streak.status}}</td>
     <td>{{streak.streak}}</td>
     <td>{{streak.last_done}}</td>
@@ -71,7 +75,7 @@
 
 <ng-template #streakModal>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Enter a New Streak:</h4>
+      <h4 class="modal-title pull-left"> Streak Details:</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
